@@ -11,7 +11,8 @@ import pickle
 
 data_type = "0506"
 file_path = f"./lsx_{data_type}.csv"
-ages = [18, 31, 51, np.inf]
+# ages = [18, 31, 51, np.inf]
+ages = [18, np.inf]
 stages = ["normal_bp", "elevated", "stage_1", "stage_2", "stage_3"]
 iterations = 1000
 
@@ -24,7 +25,7 @@ def report_progress(progress, total, lbar_prefix = '', rbar_prefix=''):
     sys.stdout.write('\r')
     sys.stdout.flush()
 
-    
+
 def operate():
     # Load CSV
     df = pd.read_csv(file_path)
