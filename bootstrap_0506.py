@@ -11,11 +11,10 @@ import pickle
 
 data_type = "0506"
 file_path = f"./lsx_{data_type}.csv"
-# ages = [18, 31, 51, np.inf]
+
 ages = [18, np.inf]
 stages = ["normal_bp", "elevated", "stage_1", "stage_2", "stage_3"]
 iterations = 1000
-
 
 def report_progress(progress, total, lbar_prefix = '', rbar_prefix=''):
     percent = round(progress / float(total) * 100, 2)
@@ -24,7 +23,6 @@ def report_progress(progress, total, lbar_prefix = '', rbar_prefix=''):
     sys.stdout.write(buf)
     sys.stdout.write('\r')
     sys.stdout.flush()
-
 
 def operate():
     # Load CSV
@@ -61,8 +59,9 @@ def operate():
                 set2 = df_age[df_age[cls_2] == True]
 
                 # Get sample size
-                N = min(set1.shape[0], set2.shape[0])
-
+                # N = min(set1.shape[0], set2.shape[0])
+                N = 100
+                
                 # Iterations
                 distances = list()
 
@@ -101,7 +100,7 @@ def operate():
 
         results[(start_age, end_age)] = result
 
-    with open(f"./{data_type}_results.pkl", "wb") as file:
+    with open(f"./{data_type}_general.pkl", "wb") as file:
         pickle.dump(results, file)
     return results
 

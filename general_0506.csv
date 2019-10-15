@@ -1,0 +1,11 @@
+,Age Range,Group1,Group2,P-Value
+0,"(18, inf)",normal_bp,elevated,0.09708199828173371
+1,"(18, inf)",normal_bp,stage_1,0.14612444252458165
+2,"(18, inf)",normal_bp,stage_2,0.07731382571823847
+3,"(18, inf)",normal_bp,stage_3,<0.001
+4,"(18, inf)",elevated,stage_1,0.08930357407800092
+5,"(18, inf)",elevated,stage_2,0.17320626577281506
+6,"(18, inf)",elevated,stage_3,0.05448224414599286
+7,"(18, inf)",stage_1,stage_2,0.08477159709497734
+8,"(18, inf)",stage_1,stage_3,0.12651794453996587
+9,"(18, inf)",stage_2,stage_3,<0.001
