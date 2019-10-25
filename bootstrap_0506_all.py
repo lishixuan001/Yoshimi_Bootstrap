@@ -11,7 +11,7 @@ import pickle
 
 data_type = "0506"
 file_path = f"./lsx_{data_type}.csv"
-ages = [18, 31, 51, np.inf]
+ages = [18, np.inf]
 stages = ["normal_bp", "elevated", "stage_1", "stage_2", "stage_3"]
 iterations = 1000
 
@@ -100,7 +100,7 @@ def operate():
 
         results[(start_age, end_age)] = result
 
-    with open(f"./{data_type}_results.pkl", "wb") as file:
+    with open(f"./{data_type}_all_results.pkl", "wb") as file:
         pickle.dump(results, file)
     return results
 

@@ -11,8 +11,7 @@ import pickle
 
 data_type = "0304"
 file_path = f"./lsx_{data_type}.csv"
-# ages = [18, 31, 51, np.inf]
-ages = [18, np.inf]
+ages = [18, 31, 51, np.inf]
 stages = ["normal_bp", "elevated", "stage_1", "stage_2", "stage_3"]
 iterations = 1000
 
