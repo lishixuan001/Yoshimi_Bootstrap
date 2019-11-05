@@ -63,7 +63,7 @@ def operate():
                 set2 = set1[set2.columns[2:-6]]
 
                 # Get sample size
-                N = min(set1.shape[0], set2.shape[0])
+                N = 100
 
                 # Iterations
                 distances = list()

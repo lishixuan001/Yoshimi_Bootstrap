@@ -53,7 +53,7 @@ def operate():
             print(groups[0].shape)
             
             # Get sample size
-            N = min([group.shape[0] for group in groups])
+            N = 100
             
             # Get random indices
             random_indices = [random.choice(group.shape[0], N) for group in groups]
