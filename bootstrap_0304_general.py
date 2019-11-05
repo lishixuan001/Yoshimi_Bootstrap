@@ -48,6 +48,7 @@ def operate():
             st()
             groups = [df_age[df_age[stage] == True] for stage in stages] # [Sample_size, 7200] * Num_Stages
             groups = [group[group.columns[2:-6]] for group in groups]
+            groups = [group for group in groups if group.shape[0] > 0]
             
             print(len(groups))
             print(groups[0].shape)
