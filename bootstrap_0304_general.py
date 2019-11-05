@@ -64,7 +64,7 @@ def operate():
             
             # Get medians
             medians = [pd.DataFrame.median(sample, axis=0) for sample in samples]
-            for j in range(medians):
+            for j in range(len(medians)):
                 medians[j][pd.isnull(medians[j])] = 0
             
             # Get distances
