@@ -69,8 +69,8 @@ def operate():
             
             # Get distances
             dists = []
-            for j in range(len(stages)-1):
-                for k in range(j+1, len(stages)):
+            for j in range(len(medians)-1):
+                for k in range(j+1, len(medians)):
                     dist = max(medians[j] - medians[k])
                     dists.append(dist)
             distance = float(np.mean(dists))
