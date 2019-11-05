@@ -84,7 +84,9 @@ def operate():
             pval = stats.t.sf(np.abs(t_value), len(distances) - 1) * 2  # two-sided pvalue = Prob(abs(t)>tt)
             result[(start_age, end_age)] = pval
         else:
-            result[(start_age, end_age)] = -1 # p < 0.05 two sided
+            pval = -1
+            result[(start_age, end_age)] = pval # p < 0.05 two sided
+        print(f"Age [{start_age}~{end_age}]; P-Value [{pval}]")
     
     st()
     with open(f"./{data_type}_general_results.pkl", "wb") as file:
