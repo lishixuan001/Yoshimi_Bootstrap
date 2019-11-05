@@ -72,7 +72,9 @@ def operate():
                     dists.append(dist)
             distance = float(np.mean(dists))
             distances.append(distance)
-            
+        
+            report_progress(i, iterations)
+
         distances = np.array(distances)
         mean, sigma = np.mean(distances), np.std(distances)
         conf_int = stats.norm.interval(0.95, loc=mean, scale=sigma)
