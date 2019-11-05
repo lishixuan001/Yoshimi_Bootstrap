@@ -45,7 +45,9 @@ def operate():
         distances = list()
         for i in range(iterations):
             
+            st()
             groups = [df_age[df_age[stage] == True] for stage in stages] # [Sample_size, 7200] * Num_Stages
+            groups = [group[group.columns[2:-6]] for group in groups]
             
             print(len(groups))
             print(groups[0].shape)

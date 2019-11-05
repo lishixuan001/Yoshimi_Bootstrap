@@ -58,6 +58,9 @@ def operate():
                 # Get set data
                 set1 = df_age[df_age[cls_1] == True]
                 set2 = df_age[df_age[cls_2] == True]
+                
+                set1 = set1[set1.columns[2:-6]]
+                set2 = set1[set2.columns[2:-6]]
 
                 # Get sample size
                 N = min(set1.shape[0], set2.shape[0])
