@@ -13,7 +13,7 @@ data_type = "0304"
 file_path = f"./lsx_{data_type}.csv"
 ages = [18, 31, 51, np.inf]
 stages = ["normal_bp", "elevated", "stage_1", "stage_2", "stage_3"]
-iterations = 1000
+iterations = 10
 
 def report_progress(progress, total, lbar_prefix = '', rbar_prefix=''):
     percent = round(progress / float(total) * 100, 2)
@@ -45,13 +45,9 @@ def operate():
         distances = list()
         for i in range(iterations):
             
-            st()
             groups = [df_age[df_age[stage] == True] for stage in stages] # [Sample_size, 7200] * Num_Stages
             groups = [group[group.columns[2:-6]] for group in groups]
             groups = [group for group in groups if group.shape[0] > 0]
-            
-            print(len(groups))
-            print(groups[0].shape)
             
             # Get sample size
             N = 100
@@ -89,7 +85,8 @@ def operate():
             result[(start_age, end_age)] = pval
         else:
             result[(start_age, end_age)] = -1 # p < 0.05 two sided
-
+    
+    st()
     with open(f"./{data_type}_general_results.pkl", "wb") as file:
         pickle.dump(result, file)
     return print(result)
