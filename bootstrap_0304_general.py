@@ -40,8 +40,6 @@ def operate():
         df_age = df[df['age'] >= start_age]
         df_age = df_age[df_age['age'] < end_age]
 
-        result = dict()
-        
         distances = list()
         for i in range(iterations):
             
@@ -76,7 +74,7 @@ def operate():
 
         distances = np.array(distances)
         mean, sigma = np.mean(distances), np.std(distances)
-        conf_int = stats.norm.interval(0.95, loc=mean, scale=sigma)
+        conf_int = stats.norm.interval(0.999, loc=mean, scale=sigma)
                 
         # Check if 0 is in between
         if 0 >= conf_int[0] and 0 <= conf_int[1]:

@@ -6,7 +6,7 @@ from numpy import random
 from scipy import stats
 import sys
 import pickle
-
+from tqdm import tqdm
 
 
 data_type = "0304"
@@ -40,10 +40,8 @@ def operate():
         df_age = df[df['age'] >= start_age]
         df_age = df_age[df_age['age'] < end_age]
 
-        result = dict()
-        
         distances = list()
-        for i in range(iterations):
+        for i in tqdm(range(iterations)):
             
             groups = [df_age[df_age[stage] == True] for stage in stages] # [Sample_size, 7200] * Num_Stages
             groups = [group[group.columns[2:-6]] for group in groups]
@@ -72,11 +70,10 @@ def operate():
             distance = float(np.mean(dists))
             distances.append(distance)
         
-            report_progress(i, iterations)
 
         distances = np.array(distances)
         mean, sigma = np.mean(distances), np.std(distances)
-        conf_int = stats.norm.interval(0.95, loc=mean, scale=sigma)
+        conf_int = stats.norm.interval(0.999, loc=mean, scale=sigma)
                 
         # Check if 0 is in between
         if 0 >= conf_int[0] and 0 <= conf_int[1]:
