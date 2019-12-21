@@ -56,9 +56,12 @@ def operate():
                 # Get set data
                 set1 = df_age[df_age[cls_1] == True]
                 set2 = df_age[df_age[cls_2] == True]
+                
+                set1 = set1[set1.columns[2:-6]]
+                set2 = set1[set2.columns[2:-6]]
 
                 # Get sample size
-                N = min(set1.shape[0], set2.shape[0])
+                N = 100
 
                 # Iterations
                 distances = list()
@@ -86,13 +89,9 @@ def operate():
                 mean, sigma = np.mean(distances), np.std(distances)
                 conf_int = stats.norm.interval(0.95, loc=mean, scale=sigma) # TODO / np.sqrt(len(distances)))
 
-                # Check if 0 is in between
-                if 0 >= conf_int[0] and 0 <= conf_int[1]:
-                    t_value = (mean - 0) / (sigma) # TODO / np.sqrt(len(distances))) # t-statistic for mean
-                    pval = stats.t.sf(np.abs(t_value), len(distances) - 1) * 2  # two-sided pvalue = Prob(abs(t)>tt)
-                    result[(j, k)] = pval
-                else:
-                    result[(j, k)] = -1 # p < 0.05 two sided
+                t_value = (mean - 0) / (sigma) # TODO / np.sqrt(len(distances))) # t-statistic for mean
+                pval = stats.t.sf(np.abs(t_value), len(distances) - 1) * 2  # two-sided pvalue = Prob(abs(t)>tt)
+                result[(j, k)] = pval
 
                 print(f"Result: [{result[(j, k)]}]")
 

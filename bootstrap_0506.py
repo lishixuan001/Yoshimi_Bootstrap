@@ -91,13 +91,9 @@ def operate():
                 mean, sigma = np.mean(distances), np.std(distances)
                 conf_int = stats.norm.interval(0.95, loc=mean, scale=sigma) # TODO / np.sqrt(len(distances)))
 
-                # Check if 0 is in between
-                if 0 >= conf_int[0] and 0 <= conf_int[1]:
-                    t_value = (mean - 0) / (sigma) # TODO / np.sqrt(len(distances))) # t-statistic for mean
-                    pval = stats.t.sf(np.abs(t_value), len(distances) - 1) * 2  # two-sided pvalue = Prob(abs(t)>tt)
-                    result[(j, k)] = pval
-                else:
-                    result[(j, k)] = -1 # p < 0.05 two sided
+                t_value = (mean - 0) / (sigma) # TODO / np.sqrt(len(distances))) # t-statistic for mean
+                pval = stats.t.sf(np.abs(t_value), len(distances) - 1) * 2  # two-sided pvalue = Prob(abs(t)>tt)
+                result[(j, k)] = pval
 
                 print(f"Result: [{result[(j, k)]}]")
 
