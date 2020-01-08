@@ -74,7 +74,6 @@ def operate():
 
         distances = np.array(distances)
         mean, sigma = np.mean(distances), np.std(distances)
-        conf_int = stats.norm.interval(0.999, loc=mean, scale=sigma)
                 
         t_value = (mean - 0) / (sigma) # TODO / np.sqrt(len(distances))) # t-statistic for mean
         pval = stats.t.sf(np.abs(t_value), len(distances) - 1) * 2  # two-sided pvalue = Prob(abs(t)>tt)
